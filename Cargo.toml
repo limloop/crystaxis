@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/crystaxis_core",
+    "crates/crystaxis_input",
+    "crates/crystaxis_render",
+    "crates/crystaxis_output",
+    "crates/crystaxis_app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+repository = "https://github.com/limloop/crystaxis"
+
+[workspace.dependencies]
+bevy = "0.18.1"
+approx = "0.5.1"
+rand = "0.10.1"

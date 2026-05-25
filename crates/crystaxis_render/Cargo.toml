@@ -1,0 +1,13 @@
+[package]
+name = "crystaxis_render"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default = ["standard"]
+standard = []
+instancing = []
+
+[dependencies]
+bevy.workspace = true
+crystaxis_core = { path = "../crystaxis_core" }

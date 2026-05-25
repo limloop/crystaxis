@@ -1,0 +1,9 @@
+[package]
+name = "crystaxis_core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bevy.workspace = true
+approx.workspace = true
+rand.workspace = true

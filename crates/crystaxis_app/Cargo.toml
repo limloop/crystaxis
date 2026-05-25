@@ -1,0 +1,16 @@
+[package]
+name = "crystaxis_app"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bevy.workspace = true
+crystaxis_core = { path = "../crystaxis_core" }
+crystaxis_input = { path = "../crystaxis_input" }
+crystaxis_render = { path = "../crystaxis_render", default-features = false }
+crystaxis_output = { path = "../crystaxis_output" }
+
+[features]
+default = ["render-standard"]
+render-standard = ["crystaxis_render/standard"]
+render-instancing = ["crystaxis_render/instancing"]
