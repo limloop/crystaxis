@@ -12,5 +12,5 @@ crystaxis_output = { path = "../crystaxis_output" }
 
 [features]
 default = ["render-standard"]
-render-standard = ["crystaxis_render/standard"]
+render-standard = ["crystaxis_render/sprite3d"]
 render-instancing = ["crystaxis_render/instancing"]

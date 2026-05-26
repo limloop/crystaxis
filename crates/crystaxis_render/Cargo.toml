@@ -4,8 +4,8 @@ version.workspace = true
 edition.workspace = true
 
 [features]
-default = ["standard"]
-standard = []
+default = ["sprite3d"]
+sprite3d = []
 instancing = []
 
 [dependencies]

@@ -1,8 +1,9 @@
-mod systems;
 mod prepare;
 mod plugin;
 
-// Модуль инстансинга подключается только при соответствующей фиче
+#[cfg(feature = "sprite3d")]
+mod sprite3d;
+
 #[cfg(feature = "instancing")]
 mod instancing;
 
