@@ -13,15 +13,22 @@ pub fn keyboard_input(
         queue.queue.push(SimCommand::SetParticleCount(10000));
     }
     if keys.just_pressed(KeyCode::KeyE) {
-        queue.queue.push(SimCommand::AdjustParticleCount(-100));
+        queue.queue.push(SimCommand::SetParticleCount(100000));
     }
     if keys.just_pressed(KeyCode::KeyR) {
+        queue.queue.push(SimCommand::SetParticleCount(1000000));
+    }
+
+    if keys.just_pressed(KeyCode::KeyA) {
+        queue.queue.push(SimCommand::AdjustParticleCount(-100));
+    }
+    if keys.just_pressed(KeyCode::KeyS) {
         queue.queue.push(SimCommand::AdjustParticleCount(100));
     }
-    if keys.just_pressed(KeyCode::KeyT) {
+    if keys.just_pressed(KeyCode::KeyD) {
         queue.queue.push(SimCommand::AdjustParticleCount(-1000));
     }
-    if keys.just_pressed(KeyCode::KeyY) {
+    if keys.just_pressed(KeyCode::KeyF) {
         queue.queue.push(SimCommand::AdjustParticleCount(1000));
     }
 }

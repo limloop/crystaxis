@@ -10,4 +10,5 @@ instancing = []
 
 [dependencies]
 bevy.workspace = true
+bevy_sprite3d = "8.0"
 crystaxis_core = { path = "../crystaxis_core" }
