@@ -6,10 +6,11 @@ pub struct FpsText;
 #[derive(Component)]
 pub struct ParticleCountText;
 
+#[cfg(feature = "ui-sprites")]
 #[derive(Component)]
 pub struct VisibilityBudgetText;
 
-/// Создаёт UI-элементы: счётчики FPS, количества частиц и лимита видимости
+/// Создаёт UI-элементы: счётчики FPS, количества частиц и (опционально) лимита видимости
 pub fn setup_ui(mut commands: Commands) {
     commands
         .spawn((
@@ -49,6 +50,7 @@ pub fn setup_ui(mut commands: Commands) {
             ));
         });
 
+    #[cfg(feature = "ui-sprites")]
     commands
         .spawn((
             Node {

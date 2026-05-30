@@ -5,13 +5,18 @@ edition.workspace = true
 
 [dependencies]
 bevy.workspace = true
-crystaxis_core = { path = "../crystaxis_core" }
+crystaxis_core = { path = "../crystaxis_core", default-features = false }
 crystaxis_input = { path = "../crystaxis_input" }
 crystaxis_render = { path = "../crystaxis_render", default-features = false }
-crystaxis_output = { path = "../crystaxis_output" }
+crystaxis_output = { path = "../crystaxis_output", default-features = false }
 
 [features]
-default = ["render-standard", "sim-verlet"]
+default = ["sim-verlet", "render-standard", "ui", "ui-sprites"]
+
+sim-verlet = ["crystaxis_core/verlet"]
+
 render-standard = ["crystaxis_render/sprite3d"]
 render-instancing = ["crystaxis_render/instancing"]
-sim-verlet = ["crystaxis_core/verlet"]
+
+ui = ["crystaxis_output/ui"]
+ui-sprites = ["crystaxis_output/ui-sprites", "render-standard"]

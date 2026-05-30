@@ -6,4 +6,9 @@ edition.workspace = true
 [dependencies]
 bevy.workspace = true
 crystaxis_core = { path = "../crystaxis_core" }
-crystaxis_render = { path = "../crystaxis_render" }
+crystaxis_render = { path = "../crystaxis_render", default-features = false }
+
+[features]
+default = ["ui"]
+ui = []
+ui-sprites = ["ui", "crystaxis_render/sprite3d"]

@@ -3,10 +3,10 @@ name = "crystaxis_render"
 version.workspace = true
 edition.workspace = true
 
-[features]
-sprite3d = []
-instancing = []
-
 [dependencies]
 bevy.workspace = true
 crystaxis_core = { path = "../crystaxis_core" }
+
+[features]
+sprite3d = []
+instancing = []
