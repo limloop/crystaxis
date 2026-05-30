@@ -1,14 +1,13 @@
 use bevy::prelude::*;
-use crate::{CommandQueue, ParticleCount, Position, SimCommand};
+use crate::{CommandQueue, ParticleCount, Particle, SimCommand};
 use super::spawn::spawn_particles;
 
 /// Обрабатывает все накопленные команды из очереди.
-/// Вычисляет итоговое требуемое количество частиц, применяет только разницу (добавление/удаление).
 pub fn process_command_queue(
     mut commands: Commands,
     mut queue: ResMut<CommandQueue>,
     mut particle_count: ResMut<ParticleCount>,
-    query: Query<Entity, With<Position>>,
+    query: Query<Entity, With<Particle>>,
 ) {
     if queue.queue.is_empty() {
         return;

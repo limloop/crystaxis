@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use bevy::diagnostic::{DiagnosticsStore, FrameTimeDiagnosticsPlugin};
-use crystaxis_core::Position;
+use crystaxis_core::Particle;
 use super::ui::{FpsText, ParticleCountText};
 
 /// Обновляет текст FPS из диагностики
@@ -17,9 +17,9 @@ pub fn update_fps_text(
     }
 }
 
-/// Обновляет текст с количеством частиц, подсчитывая сущности с Position
+/// Обновляет текст с количеством частиц, подсчитывая сущности с маркером Particle
 pub fn update_particle_count_text(
-    particle_query: Query<&Position>,
+    particle_query: Query<(), With<Particle>>,
     mut query: Query<&mut Text, (With<ParticleCountText>, Without<FpsText>)>,
 ) {
     let count = particle_query.iter().len();

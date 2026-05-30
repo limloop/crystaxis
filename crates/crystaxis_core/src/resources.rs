@@ -34,10 +34,3 @@ pub struct ParticleCount(pub usize);
 impl Default for ParticleCount {
     fn default() -> Self { Self(100) }
 }
-
-/// Данные для инстансинга: матрицы трансформаций всех частиц.
-/// Используется рендером при включённой фиче `instancing`.
-#[derive(Resource, Default)]
-pub struct InstanceData {
-    pub transforms: Vec<Mat4>,
-}

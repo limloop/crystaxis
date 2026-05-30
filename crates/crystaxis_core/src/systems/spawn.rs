@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use crate::{Position, Velocity, Particle, ParticleCount};
+use crate::{Velocity, Particle, ParticleCount};
 
 /// Создаёт начальное количество частиц при старте приложения
 pub fn spawn_initial_particles(mut commands: Commands, count: Res<ParticleCount>) {
@@ -16,6 +16,10 @@ pub fn spawn_particles(commands: &mut Commands, count: usize) {
             angle.sin() * radius,
             (i as f32 * 0.3).sin() * 2.0,
         );
-        commands.spawn((Position(pos), Velocity(Vec3::ZERO), Particle));
+        commands.spawn((
+            Transform::from_translation(pos),
+            Velocity(Vec3::ZERO),
+            Particle,
+        ));
     }
 }

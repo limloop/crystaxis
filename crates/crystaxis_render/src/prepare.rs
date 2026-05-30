@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use crystaxis_core::Position;
+use crystaxis_core::Particle;
 
 /// Данные, которые рендер подготавливает для output (например, для gizmos или UI)
 #[derive(Resource, Default)]
@@ -12,11 +12,11 @@ pub struct RenderData {
 /// Вызывается каждый кадр в PostUpdate, чтобы output мог прочитать актуальные данные.
 pub fn prepare_render_data(
     mut render_data: ResMut<RenderData>,
-    query: Query<&Position>,
+    query: Query<&Transform, With<Particle>>,
 ) {
     render_data.positions.clear();
-    for pos in query.iter() {
-        render_data.positions.push(pos.0);
+    for transform in query.iter() {
+        render_data.positions.push(transform.translation);
     }
     render_data.count = render_data.positions.len();
 }

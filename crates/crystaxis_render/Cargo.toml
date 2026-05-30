@@ -4,11 +4,9 @@ version.workspace = true
 edition.workspace = true
 
 [features]
-default = ["sprite3d"]
 sprite3d = []
 instancing = []
 
 [dependencies]
 bevy.workspace = true
-bevy_sprite3d = "8.0"
 crystaxis_core = { path = "../crystaxis_core" }

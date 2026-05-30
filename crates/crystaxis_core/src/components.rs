@@ -1,9 +1,5 @@
 use bevy::prelude::*;
 
-/// Позиция частицы в мировом пространстве
-#[derive(Component)]
-pub struct Position(pub Vec3);
-
 /// Скорость частицы (вектор)
 #[derive(Component)]
 pub struct Velocity(pub Vec3);
