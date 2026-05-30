@@ -1,3 +1,4 @@
-pub mod material;
-pub mod plugin;
-pub mod systems;
+pub(crate) mod material;
+pub(crate) mod plugin;
+pub(crate) mod systems;
+pub mod adaptive;

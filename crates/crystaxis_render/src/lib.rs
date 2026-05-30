@@ -1,4 +1,3 @@
-mod prepare;
 mod plugin;
 
 #[cfg(feature = "sprite3d")]
@@ -8,4 +7,6 @@ mod sprite3d;
 mod instancing;
 
 pub use plugin::RenderPlugin;
-pub use prepare::RenderData;
+
+#[cfg(feature = "sprite3d")]
+pub use sprite3d::adaptive::AdaptiveVisibilityBudget;

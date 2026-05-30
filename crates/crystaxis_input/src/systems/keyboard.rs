@@ -16,6 +16,9 @@ pub fn keyboard_input(
         queue.queue.push(SimCommand::SetParticleCount(100000));
     }
     if keys.just_pressed(KeyCode::KeyR) {
+        queue.queue.push(SimCommand::SetParticleCount(500000));
+    }
+    if keys.just_pressed(KeyCode::KeyR) {
         queue.queue.push(SimCommand::SetParticleCount(1000000));
     }
 
