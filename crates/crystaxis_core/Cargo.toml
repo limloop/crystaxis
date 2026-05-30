@@ -7,3 +7,6 @@ edition.workspace = true
 bevy.workspace = true
 approx.workspace = true
 rand.workspace = true
+
+[features]
+verlet = []

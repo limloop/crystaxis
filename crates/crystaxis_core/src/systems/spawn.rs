@@ -1,24 +1,33 @@
 use bevy::prelude::*;
-use crate::{Velocity, Particle, ParticleCount};
+use crate::{Velocity, ForceAccum, Particle, ParticleCount, OldForce, SimulationBox};
 
 /// Создаёт начальное количество частиц при старте приложения
-pub fn spawn_initial_particles(mut commands: Commands, count: Res<ParticleCount>) {
-    spawn_particles(&mut commands, count.0);
+pub fn spawn_initial_particles(
+    mut commands: Commands,
+    count: Res<ParticleCount>,
+    sim_box: Res<SimulationBox>,
+) {
+    spawn_particles(&mut commands, count.0, &sim_box);
 }
 
-/// Универсальная функция спавна заданного количества частиц с псевдо-распределением по кругу
-pub fn spawn_particles(commands: &mut Commands, count: usize) {
-    for i in 0..count {
-        let angle = i as f32 * 0.5;
-        let radius = 3.0 + (i as f32 * 0.1).sin() * 2.0;
+/// Универсальная функция спавна заданного количества частиц
+pub fn spawn_particles(commands: &mut Commands, count: usize, sim_box: &SimulationBox) {
+    for _ in 0..count {
         let pos = Vec3::new(
-            angle.cos() * radius,
-            angle.sin() * radius,
-            (i as f32 * 0.3).sin() * 2.0,
+            rand::random_range(-sim_box.width / 2.0..sim_box.width / 2.0),
+            rand::random_range(-sim_box.height / 2.0..sim_box.height / 2.0),
+            rand::random_range(-sim_box.depth / 2.0..sim_box.depth / 2.0),
+        );
+        let vel = Vec3::new(
+            rand::random_range(-1.0..1.0),
+            rand::random_range(-1.0..1.0),
+            rand::random_range(-1.0..1.0),
         );
         commands.spawn((
             Transform::from_translation(pos),
-            Velocity(Vec3::ZERO),
+            Velocity(vel),
+            ForceAccum(Vec3::ZERO),
+            OldForce(Vec3::ZERO),
             Particle,
         ));
     }

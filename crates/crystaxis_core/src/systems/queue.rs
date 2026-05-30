@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use crate::{CommandQueue, ParticleCount, Particle, SimCommand};
+use crate::{CommandQueue, ParticleCount, Particle, SimCommand, SimulationBox};
 use super::spawn::spawn_particles;
 
 /// Обрабатывает все накопленные команды из очереди.
@@ -8,6 +8,7 @@ pub fn process_command_queue(
     mut queue: ResMut<CommandQueue>,
     mut particle_count: ResMut<ParticleCount>,
     query: Query<Entity, With<Particle>>,
+    sim_box: Res<SimulationBox>,
 ) {
     if queue.queue.is_empty() {
         return;
@@ -26,7 +27,7 @@ pub fn process_command_queue(
 
     if target > current {
         let to_add = target - current;
-        spawn_particles(&mut commands, to_add);
+        spawn_particles(&mut commands, to_add, &sim_box);
     } else if target < current {
         let to_remove = current - target;
         for entity in query.iter().take(to_remove) {

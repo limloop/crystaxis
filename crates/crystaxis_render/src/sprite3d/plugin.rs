@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use crate::sprite3d::material::{build_material, quad_mesh};
-use crate::sprite3d::systems::add_sprites_to_new_particles;
+use crate::sprite3d::systems::{add_sprites_to_new_particles, adaptive_visibility};
 
 /// Ресурс с общими мешем и материалом для всех спрайтов частиц
 #[derive(Resource)]
@@ -15,7 +15,8 @@ impl Plugin for Sprite3dRenderPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Startup, setup_sprite3d_cache)
            .add_systems(Startup, setup_camera_and_light)
-           .add_systems(PostUpdate, add_sprites_to_new_particles);
+           .add_systems(PostUpdate, add_sprites_to_new_particles)
+           .add_systems(PostUpdate, adaptive_visibility.after(add_sprites_to_new_particles));
     }
 }
 

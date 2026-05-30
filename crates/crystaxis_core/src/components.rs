@@ -8,6 +8,11 @@ pub struct Velocity(pub Vec3);
 #[derive(Component)]
 pub struct ForceAccum(pub Vec3);
 
+/// Предыдущее ускорение для Velocity Verlet
+/// (используется только внутри систем симуляции)
+#[derive(Component)]
+pub(crate) struct OldForce(pub Vec3);
+
 /// Маркер, указывающий, что сущность является частицей симуляции
 #[derive(Component)]
 pub struct Particle;
